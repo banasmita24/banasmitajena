@@ -20,8 +20,24 @@ async function sendEmailNotification(
   }
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: { user, pass },
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // required for 465
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+    tls: {
+      rejectUnauthorized: false,
+    },
+  });
+
+  transporter.verify((error, success) => {
+    if (error) {
+      console.error("SMTP ERROR:", error);
+    } else {
+      console.log("SMTP server is ready");
+    }
   });
 
   await transporter.sendMail({
