@@ -1,83 +1,47 @@
 import { Router, type IRouter } from "express";
 import { SubmitContactBody } from "@workspace/api-zod";
 import { db, contactMessagesTable } from "@workspace/db";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 const router: IRouter = Router();
 
-async function sendEmailNotification(
-  name: string,
-  email: string,
-  subject: string,
-  message: string
-) {
-  const user = process.env["GMAIL_USER"];
-  const pass = process.env["GMAIL_APP_PASSWORD"];
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-  if (!user || !pass) {
-    console.warn("GMAIL_USER or GMAIL_APP_PASSWORD not set — skipping email.");
+async function sendEmailNotification(
+  name,
+  email,
+  subject,
+  message
+) {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn("RESEND_API_KEY not set — skipping email.");
     return;
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
-      },
-
-      family: 4, 
-
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 10000,
-
-      tls: {
-        rejectUnauthorized: false,
-      },
-    });
-    // ✅ Verify connection (debug)
-    await transporter.verify();
-    console.log("SMTP READY");
-
-    // ✅ Send email
-    await transporter.sendMail({
-      from: `"Portfolio Contact" <${user}>`,
-      to: user,
-      replyTo: `"${name}" <${email}>`,
+    await resend.emails.send({
+      from: "Portfolio <onboarding@resend.dev>", // works instantly
+      to: process.env.GMAIL_USER,
+      reply_to: email,
       subject: `[Portfolio] ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #7c3aed;">New Contact Form Message</h2>
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr>
-              <td style="padding: 8px; font-weight: bold; width: 100px;">From:</td>
-              <td style="padding: 8px;">${name}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; font-weight: bold;">Email:</td>
-              <td style="padding: 8px;"><a href="mailto:${email}">${email}</a></td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; font-weight: bold;">Subject:</td>
-              <td style="padding: 8px;">${subject}</td>
-            </tr>
-          </table>
-          <hr style="margin: 16px 0; border-color: #e5e7eb;" />
-          <h3 style="color: #374151;">Message:</h3>
-          <p style="color: #4b5563; line-height: 1.6; white-space: pre-wrap;">${message}</p>
-          <hr style="margin: 16px 0; border-color: #e5e7eb;" />
-          <p style="color: #9ca3af; font-size: 12px;">Sent via your portfolio contact form.</p>
+          
+          <p><strong>From:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Subject:</strong> ${subject}</p>
+          
+          <hr/>
+          
+          <p style="white-space: pre-wrap;">${message}</p>
         </div>
       `,
     });
 
-    console.log(`✅ Email sent from: ${name} <${email}> — Subject: ${subject}`);
-  } catch (err: any) {
-    console.error("❌ Email send failed (non-fatal):", err.message);
+    console.log(`✅ Email sent via Resend from: ${name}`);
+  } catch (err) {
+    console.error("❌ Email failed:", err.message);
   }
 }
 
@@ -86,11 +50,10 @@ router.post("/contact", async (req, res) => {
     const parseResult = SubmitContactBody.safeParse(req.body);
 
     if (!parseResult.success) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
-        error: "Invalid input. Please check all fields and try again.",
+        error: "Invalid input",
       });
-      return;
     }
 
     const { name, email, subject, message } = parseResult.data;
@@ -110,13 +73,14 @@ router.post("/contact", async (req, res) => {
 
     res.json({
       success: true,
-      message: "Thank you for reaching out! I'll get back to you soon.",
+      message: "Message sent successfully!",
     });
+
   } catch (error) {
-    console.error("Contact form error:", error);
+    console.error("Contact error:", error);
     res.status(500).json({
       success: false,
-      error: "Something went wrong. Please try again later.",
+      error: "Something went wrong",
     });
   }
 });
