@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "p3k6D0cubNeDAyHVzCqy9"
+uri = "file://banasmita-portfolio.tar.gz"
+type = "unspecified"
+title = "banasmita-portfolio (source code)"

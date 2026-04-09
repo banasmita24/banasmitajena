@@ -1,0 +1,83 @@
+Build a modern, full-stack personal portfolio website using the uploaded resume PDF as the primary source of content.
+
+Tech Stack:
+
+* Frontend: React with Tailwind CSS
+* Backend: Node.js with Express (for contact form handling)
+* Fully responsive and deployment-ready
+
+Design:
+
+* Dark theme (black background with blue/purple gradient accents)
+* Clean, minimal, and professional UI (inspired by Apple / Vercel portfolios)
+* Smooth animations (scroll reveal, hover effects, fade transitions)
+* Subtle glassmorphism and soft shadows
+* Prioritize readability and spacing (avoid clutter)
+
+Structure:
+
+* Automatically extract and organize content from the uploaded resume into:
+
+  1. Hero Section (Name, tagline, intro)
+  2. About
+  3. Projects
+  4. Experience / Leadership
+  5. Publications
+  6. Technical Skills
+  7. Contact
+
+Hero Section:
+
+* Prominent name and role
+* Animated typing effect for roles
+* Buttons: "View Projects", "View Resume", "Contact Me"
+
+Projects Section:
+
+* Display projects as animated cards with hover effects
+* Each card should include:
+
+  * Title
+  * Description
+  * Tech stack
+  * Key metrics/achievements (if available)
+
+Experience Section:
+
+* Timeline-style layout with smooth transitions
+
+Skills Section:
+
+* Categorized display (Languages, Frameworks, Tools, Domains)
+* Use animated badges or grid layout
+
+Contact Section:
+
+* Email, LinkedIn, GitHub (extracted from resume)
+* Functional contact form (connected to backend API)
+
+Backend Features:
+
+* Handle contact form submissions
+* Validate input fields
+* Log/store messages
+
+Navigation:
+
+* Sticky navbar with smooth scrolling
+* Highlight active section
+* Scroll progress indicator
+
+Extras:
+
+* Add loading animation
+* Add subtle parallax scrolling
+* Optimize performance and responsiveness
+
+Important:
+
+* Accurately extract all content from the uploaded resume PDF
+* Maintain a clean and professional layout
+* Avoid excessive animations; keep it smooth and elegant
+* Ensure production-ready clean code
+* Improve animations using Framer Motion and make UI more premium like Apple website

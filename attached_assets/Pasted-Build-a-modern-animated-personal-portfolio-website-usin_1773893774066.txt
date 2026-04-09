@@ -1,0 +1,89 @@
+Build a modern, animated personal portfolio website using React (Tailwind CSS) and Node.js + Express backend, using the uploaded resume as the main source of content.
+
+Design Requirements:
+
+* Default theme: Cute light theme (pastel colors like light pink, lavender, baby blue)
+* Add a toggle to switch between Light Mode and Dark Mode
+* Dark mode should use dark purple/black tones with smooth transition
+* Use rounded UI, soft shadows, and glassmorphism
+* Include floating elements (gradient blobs, sparkles, soft shapes)
+* Smooth animations using Framer Motion
+
+Hero Section:
+
+* Extract name and details from resume
+* Tagline: "AI & ML Enthusiast"
+* Animated typing effect
+* Buttons:
+
+  * "View Projects"
+  * "View Resume" → link: https://drive.google.com/file/d/1N8jS19M8cRy9klDCSa2TIPUwwAzsoBuC/preview
+
+Sections (auto-filled from resume):
+
+* About (keep very short, 2–3 lines)
+* Projects (main focus, show as animated cards)
+* Experience / Leadership (timeline style)
+* Publications
+* Technical Skills (display as badges/icons)
+* Contact
+
+Projects Section:
+
+* Use animated cards with hover effects (scale, glow, tilt)
+* Show:
+
+  * Title
+  * 1-line description
+  * Tech stack (badges)
+  * Key metrics highlighted
+
+Experience Section:
+
+* Minimal timeline layout
+* Show progression clearly
+
+Skills:
+
+* Display as animated badges or icons
+* Keep visual, not text-heavy
+
+Contact Section:
+
+* Include form (Name, Email, Message)
+* Clean and cute UI
+
+Backend Requirements:
+
+* Use Node.js + Express
+* Implement contact form email using nodemailer
+* Use Gmail SMTP with App Password
+* Store credentials in environment variables
+* Send emails to: [banasmitajena2405@gmail.com](mailto:banasmitajena2405@gmail.com)
+* Show success/failure messages on UI
+
+Animations:
+
+* Scroll reveal animations
+* Floating background shapes
+* Smooth transitions
+* Subtle parallax effects
+
+Navigation:
+
+* Sticky navbar
+* Smooth scrolling
+* Theme toggle button
+
+Other Requirements:
+
+* Fully responsive
+* Fast and optimized
+* Clean code with reusable components
+* Avoid too much text, focus on visuals
+
+Important:
+
+* Extract and structure content from the uploaded resume
+* Keep design cute, aesthetic, and modern
+* Ensure smooth performance and no clutter

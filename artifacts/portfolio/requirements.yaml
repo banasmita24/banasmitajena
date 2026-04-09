@@ -1,0 +1,14 @@
+packages:
+  "framer-motion": "For page transitions, scroll reveals, and micro-interactions"
+  "react-hook-form": "For contact form state management"
+  "@hookform/resolvers": "For zod validation integration"
+  "zod": "For form schema definition"
+
+images:
+  - path: "artifacts/portfolio/public/images/hero-bg.png"
+    description: "Dark premium abstract background with subtle deep blue and purple gradient mesh, glassmorphism style, extremely minimal, similar to Vercel or Apple presentation backgrounds"
+    aspect_ratio: "16:9"
+
+notes:
+  - App uses @workspace/api-client-react for API mutations
+  - All styling utilizes Tailwind CSS v4 variables with a forced dark theme

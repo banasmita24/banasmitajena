@@ -1,0 +1,108 @@
+Build a premium, visually rich personal portfolio website using React (with Tailwind CSS) and a Node.js + Express backend, using the uploaded resume as the primary source of content.
+
+Design Vision:
+
+* High-end, modern UI with a unique and complex layout (not basic or template-like)
+* Combine cute aesthetic with advanced design elements
+* Default theme: soft pastel light theme (light pink, lavender, baby blue gradients)
+* Include a smooth toggle for Dark Mode (dark purple/black tones with neon accents)
+* Use glassmorphism, layered UI, depth, and soft shadows
+
+3D & Advanced Visual Effects:
+
+* Integrate 3D elements using Three.js or React Three Fiber
+* Add interactive 3D objects (floating spheres, particles, abstract shapes)
+* Include subtle mouse movement interaction (parallax tilt / depth effect)
+* Use animated gradient blobs and glowing particles in the background
+* Add depth using layered components and z-axis movement
+
+Animations:
+
+* Use Framer Motion for smooth, high-quality animations
+* Scroll-triggered animations (fade, slide, scale)
+* Floating animations for background elements
+* Micro-interactions (button hover, card tilt, glow effects)
+* Smooth page transitions
+* Subtle parallax scrolling for depth
+
+Hero Section:
+
+* Extract name and details from the uploaded resume
+* Tagline: "AI & ML Enthusiast"
+* Animated typing effect for roles
+* 3D animated background (floating objects or particles)
+* Buttons:
+
+  * "View Projects"
+  * "View Resume" → https://drive.google.com/file/d/1N8jS19M8cRy9klDCSa2TIPUwwAzsoBuC/preview
+* Add interactive cursor or hover effects
+
+Sections (auto-extracted from resume):
+
+* About (very short, 2–3 lines)
+* Projects (main focus)
+* Experience / Leadership
+* Publications
+* Technical Skills
+* Contact
+
+Projects Section:
+
+* Display as advanced interactive cards with:
+
+  * 3D tilt effect on hover
+  * Glow and gradient borders
+  * Smooth scaling animations
+* Each card includes:
+
+  * Title
+  * Short description
+  * Tech stack (styled badges)
+  * Key metrics highlighted visually (e.g., accuracy, performance)
+* Use grid with dynamic layout (not plain rows)
+
+Experience Section:
+
+* Timeline with animated transitions and visual connectors
+* Show progression clearly with motion effects
+
+Skills Section:
+
+* Display skills as animated floating badges or 3D-like elements
+* Use icons and interactive hover animations
+* Keep it visual and engaging
+
+Contact Section:
+
+* Clean but stylish UI with subtle animations
+* Include form (Name, Email, Message)
+
+Backend Requirements:
+
+* Use Node.js + Express
+* Implement contact form email using nodemailer
+* Use Gmail SMTP with App Password
+* Store credentials securely in environment variables
+* Send emails to: [banasmitajena2405@gmail.com](mailto:banasmitajena2405@gmail.com)
+* Show success/error notifications with animations
+
+Navigation:
+
+* Sticky navbar with smooth scrolling
+* Highlight active section dynamically
+* Theme toggle (light/dark)
+* Smooth transitions between sections
+
+Performance & Code:
+
+* Fully responsive (mobile + desktop)
+* Optimize animations to avoid lag
+* Use reusable components and clean code structure
+* Lazy load heavy elements (especially 3D components)
+
+Important:
+
+* Extract and structure content from the uploaded resume
+* Keep text minimal and focus on visual storytelling
+* Ensure UI feels premium, interactive, and modern
+* Avoid clutter but maintain a rich, layered design
